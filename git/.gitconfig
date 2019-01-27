@@ -1,0 +1,5 @@
+[user]
+	name = Michał Popek
+	email = michal@popek.co
+[core]
+	excludesfile = ~/.gitignore_global

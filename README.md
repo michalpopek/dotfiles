@@ -7,22 +7,34 @@ Before proceeding make sure that you're logged in into your Apple account.
 1. Install Brew.
 
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-2. Clone this repository in your home directory.
-
-```bash
-git clone git@github.com:michalpopek/dotfiles.git ~/.dotfiles
-```
-
-3. Install Brew dependencies.
+2. Install Brew dependencies.
 
 ```bash
 brew bundle
 ```
 
-4. Set ZSH as the default shell.
+3. Install zgen
+
+```bash
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+```
+
+4. Clone this repository in your home directory.
+
+```bash
+git clone git@github.com:michalpopek/dotfiles.git
+```
+
+5. Run Stow.
+
+```bash
+stow -t ~ editorconfig git iterm zsh
+```
+
+6. Set ZSH as the default shell.
 
 ```bash
 echo "$(which zsh)" >> /etc/shells
@@ -31,13 +43,7 @@ chsh -s $(which zsh)
 
 You need to log out and log in for changes to be applied.
 
-5. Run Stow.
-
-```bash
-stow editorconfig git iterm prettier zsh
-```
-
-6. Configure iTerm.
+7. Configure iTerm.
 
 ```bash
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.iterm"

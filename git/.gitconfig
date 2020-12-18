@@ -1,5 +1,11 @@
 [user]
-	name = Michał Popek
-	email = michal@popek.co
+  name = Michał Popek
+  email = michal@popek.co
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+  editor = code --wait
+[pull]
+  rebase = false
+[init]
+  defaultBranch = main

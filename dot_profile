@@ -1,0 +1,12 @@
+##
+# Apparently, you need to explicitly source the Homebrew shell env on newer Macs,
+# othewise it won't work out of the box.
+##
+[[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)" || true
+
+##
+# Initialize all version managers so the proper tools versions
+# are available to scripts.
+##
+eval "$(nodenv init -)"
+eval "$(rbenv init -)"

@@ -18,7 +18,7 @@ Before proceeding make sure that you're logged in into your Apple account.
 brew bundle
 ```
 
-3. Open 1Password and add all necessary vaults.
+3. Open 1Password and log into all necessary vaults. Next, go to `Setting -> Developer` and enable the SSH agent, as well as the CLI integration.
 
 4. Set the ZSH version installed by Homebrew as the default shell.
 
@@ -27,9 +27,9 @@ echo "$(which zsh)" | sudo tee -a /etc/shells
 chsh -s $(which zsh)
 ```
 
-You need to log out and log in for changes to be applied.
+5. Log out and log in for changes to be applied.
 
-5. Run chezmoi to put all of the config file into their places.
+6. Run chezmoi to put all of the config files into their places.
 
 ```sh
 chezmoi apply

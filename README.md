@@ -1,51 +1,36 @@
 # Dotfiles
 
+The dotfiles are managed using [chezmoi](https://www.chezmoi.io). Download this repo into `~/.local/share/chezmoi`.
+
 Before proceeding make sure that you're logged in into your Apple account.
 
 ## Installation
 
 1. Install Brew.
 
-```bash
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 2. Install Brew dependencies.
 
-```bash
+```sh
 brew bundle
 ```
 
-3. Install zgen
+3. Open 1Password and add all necessary vaults.
 
-```bash
-git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
-```
+4. Set the ZSH version installed by Homebrew as the default shell.
 
-4. Clone this repository in your home directory.
-
-```bash
-git clone git@github.com:michalpopek/dotfiles.git
-```
-
-5. Run Stow.
-
-```bash
-stow -t ~ editorconfig git iterm zsh
-```
-
-6. Set ZSH as the default shell.
-
-```bash
-echo "$(which zsh)" >> /etc/shells
+```sh
+echo "$(which zsh)" | sudo tee -a /etc/shells
 chsh -s $(which zsh)
 ```
 
 You need to log out and log in for changes to be applied.
 
-7. Configure iTerm.
+5. Run chezmoi to put all of the config file into their places.
 
-```bash
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.iterm"
-defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+```sh
+chezmoi apply
 ```

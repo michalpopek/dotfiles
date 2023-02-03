@@ -1,0 +1,75 @@
+[user]
+name = Michał Popek
+email = michal@popek.co
+
+[feature]
+manyFiles = true
+
+[core]
+excludesfile = ~/.config/git/ignore
+autocrlf = input
+pager = delta
+
+[interactive]
+diffFilter = delta --color-only --features=interactive
+
+[pull]
+rebase = false
+
+[init]
+defaultBranch = main
+
+[rebase]
+autoStash = false
+
+[merge]
+autoStash = false
+
+[stash]
+showPatch = true
+
+[status]
+showStash = true
+
+[column]
+ui = row dense
+
+[delta]
+features = decorations
+side-by-side = true
+light = true
+
+[delta "interactive"]
+keep-plus-minus-markers = false
+
+[user]
+signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDITE7cq83goy1r6isWiYXU+II8h1Hl4VukcigQXOd/KM3Z/1LddK1YrZYGTlU5pJydcXw9C7jbcC/bn9/XspIaovgJmjIlLlSj/JyQ2R4rM3GmLPXfrbxmUZVZ+YiIMlTaQIrNTGzGkgekzA44va1ckA2bjhloiJVgIDBQzedup9JOnnsCyVlKXAx0psBSQj9YlrLImEs3xslHa+ueN+Cn29Xm6GQw3VxwOyFdtm9OfIeJWFQD8YAcna5pS5AKIfKb5VkGDbXqWnygrw2Nuu1642f7Z8SB7HdsFf2clyb5qmQQByRF/lF02nxALzTdEFYLzmpQ2kkU93FU4hC+64uswavU4TU8X9r5Il0MofUe4IgJ3g6XXNOvR5GJipqaZjfEHXEdz8YGj9q0/nWnPLuBY3x31BZhmaqVVKmA9dWFaqgZUrw+MRuuTrSvSsRJue/mk0dOnHpW0vWgS7WfYxAP4x8A7Jmwkuw0r/NnuPAbh60okIOixmDuFDQn/H1Ap7NhNaFHGHM7zx2nj6fD16jZaT67m3voIgdREuqxVOzvXB247AheMLZyesrMuH98ACJeocNz0C9uzGdmUaPq9qFJ/9Tk2dQNw3Bf1tPXR1LZiMrLZHx7DVoLqVRJWPZc1ry9WUN6mFvSBl5ESZlEkft0nSoT3W2jL4jw6qcJdJINAw==
+
+[gpg]
+format = ssh
+
+[gpg "ssh"]
+program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+gpgsign = true
+
+[maintenance]
+repo = /Users/michalpopek/.znap/ohmyzsh
+repo = /Users/michalpopek/.znap/zcolors
+repo = /Users/michalpopek/.znap/zsh-autocomplete
+repo = /Users/michalpopek/.znap/zsh-autosuggestions
+repo = /Users/michalpopek/.znap/zsh-history-substring-search
+repo = /Users/michalpopek/.znap/zsh-snap
+repo = /Users/michalpopek/.znap/zsh-syntax-highlighting
+repo = /Users/michalpopek/.znap/zsh-z
+repo = /Users/michalpopek/.znap/zsh-completions
+repo = /Users/mp/.znap/ohmyzsh
+repo = /Users/mp/.znap/zcolors
+repo = /Users/mp/.znap/zsh-autocomplete
+repo = /Users/mp/.znap/zsh-autosuggestions
+repo = /Users/mp/.znap/zsh-completions
+repo = /Users/mp/.znap/zsh-history-substring-search
+repo = /Users/mp/.znap/zsh-snap
+repo = /Users/mp/.znap/zsh-syntax-highlighting
+repo = /Users/mp/.znap/zsh-z

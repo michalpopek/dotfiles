@@ -3,15 +3,6 @@ export EDITOR="code --wait"
 
 # define enviroment variables containing configuration for tools
 export BAT_THEME="ansi"
-export FZF_DEFAULT_OPTS="
-  --reverse
-  --color=fg+:14,bg+:-1,gutter:-1,hl:3,hl+:3,border:15
-  --color=info:15,header:8,pointer:14,marker:5,prompt:8
-  --pointer ' '
-  --marker ' '
-  --prompt ' '
-  --tiebreak=chunk
-"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"
 export ZNAP_DIR="$HOME/.znap/zsh-snap"
 
@@ -25,6 +16,7 @@ znap prompt starship
 # load plugins
 znap source agkozak/zsh-z
 znap source marlonrichert/zcolors
+znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-history-substring-search
 znap source zdharma-continuum/fast-syntax-highlighting
@@ -36,7 +28,7 @@ znap eval lscolors "python3 $ZDOTDIR/ls_colors_gen.py"
 znap eval zcolors "zcolors ${(q)LS_COLORS}"
 
 # configure completions (taken from: https://thevaluable.dev/zsh-completion-guide-examples/)
-zstyle ':completion:*' menu yes select search
+zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' squeeze-slashes true
@@ -47,6 +39,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:*:*:descriptions' format '%F{cyan}-- %d --%f'
 zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+
+# configure autosuggestions
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # set syntax highlighting theme
 zstyle :plugin:fast-syntax-highlighting theme base16

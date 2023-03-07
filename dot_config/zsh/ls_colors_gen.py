@@ -349,7 +349,6 @@ def gen_ls_colors():
                 ls_colors.append(f"{ext}={color}")
 
     ls_colors_env = ":".join(ls_colors)
-    sep = "\n\t"
     print(f"export LS_COLORS='{ls_colors_env}'")
 
 

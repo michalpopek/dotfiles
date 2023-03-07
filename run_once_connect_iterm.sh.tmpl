@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "{{ joinPath .chezmoi.sourceDir "external" "iterm2" }}"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true

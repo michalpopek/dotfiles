@@ -2,7 +2,7 @@
 export EDITOR="code --wait"
 
 # define enviroment variables containing configuration for tools
-export BAT_THEME="ansi"
+export BAT_THEME="Nord"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"
 export ZNAP_DIR="$HOME/.znap/zsh-snap"
 

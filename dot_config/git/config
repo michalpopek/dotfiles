@@ -37,7 +37,7 @@ ui = row dense
 [delta]
 features = decorations
 side-by-side = true
-light = true
+syntax-theme = Nord
 
 [delta "interactive"]
 keep-plus-minus-markers = false

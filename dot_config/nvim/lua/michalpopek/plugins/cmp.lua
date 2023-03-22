@@ -28,7 +28,7 @@ return {
       copilot.setup {}
       luasnip.config.setup {}
 
-      cmp.seup {
+      cmp.setup {
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)

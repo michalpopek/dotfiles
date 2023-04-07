@@ -1,10 +1,11 @@
 return {
   {
-    'gbprod/nord.nvim',
+    'EdenEast/nightfox.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'nord'
+      require('nightfox').setup {}
+      vim.cmd('colorscheme dayfox')
     end,
   },
 }

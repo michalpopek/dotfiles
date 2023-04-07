@@ -1,6 +1,3 @@
-# override the default editor
-export EDITOR="code --wait"
-
 # define enviroment variables containing configuration for tools
 export BAT_THEME="ansi"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"

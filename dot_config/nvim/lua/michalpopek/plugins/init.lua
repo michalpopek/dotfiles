@@ -22,6 +22,6 @@ require('lazy').setup({
   { import = 'michalpopek.plugins.null-ls' },
   { import = 'michalpopek.plugins.lualine' },
   { import = 'michalpopek.plugins.git' },
-  'numToStr/Comment.nvim',
+  { 'numToStr/Comment.nvim', opts = {} },
   'tpope/vim-sleuth',
 })

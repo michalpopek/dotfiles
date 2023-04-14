@@ -3,14 +3,24 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
+  build = function()
+    pcall(require('nvim-treesitter.install').update({ with_sync = true }))
+  end,
   config = function()
-    pcall(require('nvim-treesitter.install').update { with_sync = true })
-
-    require('nvim-treesitter.configs').setup {
-      ensure_installed = { 'css', 'html', 'json', 'python', 'tsx', 'typescript', 'help', 'yaml', 'vim' },
+    require('nvim-treesitter.configs').setup({
+      ensure_installed = {
+        'css',
+        'html',
+        'json',
+        'python',
+        'tsx',
+        'help',
+        'yaml',
+        'vim',
+      },
       auto_install = false,
       highlight = { enable = true },
-      indent = { enable = true, disable = { 'python' } },
+      -- indent = { enable = true, disable = { 'python' } },
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -63,11 +73,11 @@ return {
           },
         },
       },
-    }
+    })
 
-    -- Override syntax for certain filetypes
-    local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
-    ft_to_parser.javascript = 'tsx'
-    ft_to_parser.javascriptreact = 'tsx'
+    vim.treesitter.language.register(
+      'tsx',
+      { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }
+    )
   end,
 }

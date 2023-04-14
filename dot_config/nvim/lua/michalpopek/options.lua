@@ -18,6 +18,9 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
+-- Enable relative line numbers
+vim.o.relativenumber = true
+
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -41,3 +44,8 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- Make splitting a bit more aligned with current standards
+vim.o.splitbelow = true
+vim.o.splitright = true
+

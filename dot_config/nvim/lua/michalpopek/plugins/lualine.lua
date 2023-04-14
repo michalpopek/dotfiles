@@ -7,19 +7,12 @@ return {
     options = {
       theme = 'auto',
     },
-    winbar = {
-      lualine_c = {
+    extension = { 'quickfix' },
+    tabline = {
+      lualine_a = {
         {
-          'filename',
-          path = 1,
-        },
-      },
-    },
-    inactive_winbar = {
-      lualine_c = {
-        {
-          'filename',
-          path = 1,
+          'tabs',
+          mode = 2,
         },
       },
     },
@@ -49,17 +42,35 @@ return {
       },
       lualine_c = {
         {
-          'lsp_progress',
-          display_components = { 'lsp_client_name', 'spinner' },
-          spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
+          'filename',
+          path = 1,
         },
       },
       lualine_x = {
         'filetype',
+        {
+          'lsp_progress',
+          display_components = { 'lsp_client_name', 'spinner' },
+          spinner_symbols = {
+            '🌑 ',
+            '🌒 ',
+            '🌓 ',
+            '🌔 ',
+            '🌕 ',
+            '🌖 ',
+            '🌗 ',
+            '🌘 ',
+          },
+        },
       },
     },
     inactive_sections = {
-      lualine_c = {},
+      lualine_c = {
+        {
+          'filename',
+          path = 1,
+        },
+      },
     },
   },
 }

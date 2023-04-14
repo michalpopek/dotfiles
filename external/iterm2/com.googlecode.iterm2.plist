@@ -941,7 +941,7 @@
 	<key>IRMemory</key>
 	<integer>4</integer>
 	<key>MinimumWeightDifferenceForBoldFont</key>
-	<integer>1</integer>
+	<integer>4</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>

@@ -2,14 +2,10 @@ gui:
   showIcons: true
   theme:
     lightTheme: true
-    activeBorderColor:
-      - black
-      - bold
-    inactiveBorderColor:
-      - black
-    selectedLineBgColor:
-      - default
+    defaultFgColor:
+      - "#3d2b5a" # fix for dayfox
+
 git:
   paging:
     colorArg: always
-    pager: delta --paging=never
+    useConfig: true

@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AI Prompt</key>
+	<string>You are going to translate a natural language description to a series of commands for the \(shell) shell.
+Here is some information about the environment: \(uname)
+Respond with one or more commands. Do not include any explanation or additional text besides the commands.Request: \(ai.prompt)
+</string>
 	<key>AllowClipboardAccess</key>
 	<true/>
 	<key>Custom Color Presets</key>
@@ -936,6 +941,8 @@
 	<string>F94A9A0D-62F5-45D3-9D98-758551EA1687</string>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideScrollbar</key>
+	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>IRMemory</key>
@@ -1570,9 +1577,9 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGMDZNerdFontCompleteM-Regular 12</string>
+			<string>MonoLisaNerdFontAAEOPSPLMDIWEA-Regular 13</string>
 			<key>Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
@@ -1617,6 +1624,8 @@
 			<array/>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
+			<key>Thin Strokes</key>
+			<integer>4</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>

@@ -3,19 +3,20 @@ return {
   dependencies = {
     'arkav/lualine-lsp-progress',
   },
+  lazy = false,
   opts = {
     options = {
       theme = 'auto',
     },
     extension = { 'quickfix' },
-    tabline = {
-      lualine_a = {
-        {
-          'tabs',
-          mode = 2,
-        },
-      },
-    },
+    -- tabline = {
+    --   lualine_b = {
+    --     {
+    --       'tabs',
+    --       mode = 2,
+    --     },
+    --   },
+    -- },
     sections = {
       lualine_b = {
         {

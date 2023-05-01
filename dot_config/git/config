@@ -36,7 +36,7 @@ ui = row dense
 
 [delta]
 features = decorations
-side-by-side = true
+side-by-side = false
 syntax-theme = ansi
 light = true
 

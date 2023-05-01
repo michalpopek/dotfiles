@@ -2,6 +2,14 @@
 export BAT_THEME="ansi"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"
 export ZNAP_DIR="$HOME/.znap/zsh-snap"
+export FZF_DEFAULT_OPTS="--reverse"
+
+# dayfox theme for fzf
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
+ --color=fg:#3d2b5a,bg:#f6f2ee,hl:#4863b6
+ --color=fg+:#4863b6,bg+:#f6f2ee,hl+:#b86e28
+ --color=info:#b86e28,prompt:#b3434e,pointer:#8452d5
+ --color=marker:#577f63,spinner:#8452d5,header:#488d93"
 
 # bootstrap plugin manager
 source "$ZNAP_DIR/znap.zsh"
@@ -11,11 +19,10 @@ znap eval starship 'starship init zsh --print-full-init'
 znap prompt starship
 
 # load plugins
-znap source agkozak/zsh-z
 znap source marlonrichert/zcolors
+znap source Aloxaf/fzf-tab
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
-znap source zsh-users/zsh-history-substring-search
 znap source zdharma-continuum/fast-syntax-highlighting
 
 # generate LS_COLORS so it's coherent with exa's output
@@ -29,13 +36,15 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:*:*:descriptions' format '%F{cyan}-- %d --%f'
-zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+
+# configure fzf-tab
+zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS) # fzf-tab needs to be passed fzf flags explicitly
+zstyle ':fzf-tab:*' default-color $'\033[39m' # set the foreground color for default result group
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath' # preview folders with exa
 
 # configure autosuggestions
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
@@ -46,11 +55,10 @@ zstyle :plugin:fast-syntax-highlighting theme base16
 # enter emacs mode by default
 bindkey -e
 
-# bind keys for history substring search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+# configure fzf keybindings
+if [ -d "$(brew --prefix fzf)/shell" ]; then
+  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
+fi
 
 # prepare shortcuts for frequently used dirs
 : ${GITDIR:=$HOME/Developer}
@@ -95,7 +103,6 @@ alias lg="lazygit"
 alias ls="gls --color=auto"
 alias ll="exa --icons -alh"
 alias p="pnpm"
-alias vim="nvim"
 alias y="yarn"
 alias ya="yarn add"
 alias yad="yarn add --dev"
@@ -117,3 +124,6 @@ alias yup="yarn upgrade"
 alias -s {css,csv,go,gradle,html,js,json,md,patch,properties,py,ts,txt,xml,yml}=bat
 alias -s gz="gzip -l"
 alias -s {log,out}="tail -F"
+
+# run zoxide
+eval "$(zoxide init zsh)"

@@ -20,12 +20,11 @@ return {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-path',
         'L3MON4D3/LuaSnip',
-        'zbirenbaum/copilot.lua',
-        'zbirenbaum/copilot-cmp',
         'onsails/lspkind.nvim',
       },
     },
   },
+  event = 'VeryLazy',
   config = function()
     local lsp = require('lsp-zero').preset({})
 
@@ -72,6 +71,10 @@ return {
           'yaml',
           'html',
           'css',
+          -- shfmt
+          'sh',
+          'zsh',
+          'bash',
         },
       },
     })
@@ -111,28 +114,21 @@ return {
 
     lsp.setup()
 
-    -- Kick off Copilot but keep it low profile, since we'll be using
-    -- using it via completions; don't forget to run `:Copilot auth`
-    -- after installing it
-    require('copilot').setup({
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    })
-
-    require('copilot_cmp').setup({})
-
     local cmp = require('cmp')
     local cmp_action = require('lsp-zero').cmp_action()
 
     cmp.setup({
+      window = {
+        max_width = 150,
+        max_height = 300,
+      },
       sources = {
-        { name = 'copilot' },
         { name = 'nvim_lsp' },
         { name = 'path' },
         { name = 'luasnip', keyword_length = 2 },
       },
       mapping = {
-        ['<C-y>'] = cmp.mapping.confirm({
+        ['<CR>'] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
         }),
@@ -145,7 +141,6 @@ return {
           mode = 'text_symbol',
           maxwidth = 50,
           ellipsis_char = '...',
-          symbol_map = { Copilot = '' },
         }),
       },
     })

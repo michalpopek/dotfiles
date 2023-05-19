@@ -1,6 +1,5 @@
 return {
   'nvim-telescope/telescope.nvim',
-  version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -22,10 +21,6 @@ return {
   config = function()
     require('telescope').setup({
       defaults = {
-        sorting_strategy = 'ascending',
-        layout_config = {
-          prompt_position = 'top',
-        },
         mappings = {
           i = {
             ['<C-u>'] = false,
@@ -67,15 +62,15 @@ return {
     local themes = require('telescope.themes')
     local extensions = telescope.extensions
 
-    vim.keymap.set(
-      'n',
-      '<leader>b',
-      extensions.file_browser.file_browser,
-      { desc = 'Open file [b]rowser in the root folder' }
-    )
+    vim.keymap.set('n', '<leader>b', function()
+      extensions.file_browser.file_browser({ hidden = true })
+    end, { desc = 'Open file [b]rowser in the root folder' })
 
     vim.keymap.set('n', '<leader>B', function()
-      extensions.file_browser.file_browser({ path = utils.buffer_dir() })
+      extensions.file_browser.file_browser({
+        path = utils.buffer_dir(),
+        hidden = true,
+      })
     end, { desc = 'Open file [b]rowser in buffer directory' })
 
     vim.keymap.set('n', '<leader>?', function()
@@ -83,14 +78,11 @@ return {
     end, { desc = '[?] Find recently opened files' })
 
     vim.keymap.set('n', '<leader><space>', function()
-      builtins.buffers({
-        initial_mode = 'normal',
-        sort_mru = true,
-      })
+      builtins.buffers({ sort_mru = true })
     end, { desc = '[ ] Find existing buffers' })
 
     vim.keymap.set('n', '<leader>/', function()
-      builtins.current_buffer_fuzzy_find(themes.get_dropdown())
+      builtins.current_buffer_fuzzy_find(themes.get_ivy())
     end, { desc = '[/] Fuzzily search in current buffer' })
 
     vim.keymap.set(

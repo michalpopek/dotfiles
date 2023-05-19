@@ -15,13 +15,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { import = 'michalpopek.plugins.core' },
-  { import = 'michalpopek.plugins.colorschemes' },
-  { import = 'michalpopek.plugins.treesitter' },
-  { import = 'michalpopek.plugins.telescope' },
-  { import = 'michalpopek.plugins.lsp-zero' },
-  { import = 'michalpopek.plugins.null-ls' },
-  { import = 'michalpopek.plugins.lualine' },
-  { import = 'michalpopek.plugins.git' },
-  { import = 'michalpopek.plugins.copilot' },
+  defaults = {
+    lazy = false,
+  },
+  spec = {
+    { import = 'michalpopek.plugins.core' },
+    { import = 'michalpopek.plugins.colorschemes' },
+    { import = 'michalpopek.plugins.treesitter' },
+    { import = 'michalpopek.plugins.telescope' },
+    { import = 'michalpopek.plugins.lsp-zero' },
+    { import = 'michalpopek.plugins.null-ls' },
+    { import = 'michalpopek.plugins.lualine' },
+    { import = 'michalpopek.plugins.git' },
+    { import = 'michalpopek.plugins.copilot' },
+  },
 })

@@ -5,8 +5,7 @@ export ZNAP_DIR="$HOME/.znap/zsh-snap"
 export FZF_DEFAULT_OPTS="--reverse"
 
 # dayfox theme for fzf
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
- --color=fg:#3d2b5a,bg:#f6f2ee,hl:#4863b6
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=fg:#3d2b5a,bg:#f6f2ee,hl:#4863b6
  --color=fg+:#4863b6,bg+:#f6f2ee,hl+:#b86e28
  --color=info:#b86e28,prompt:#b3434e,pointer:#8452d5
  --color=marker:#577f63,spinner:#8452d5,header:#488d93"
@@ -15,8 +14,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
 source "$ZNAP_DIR/znap.zsh"
 
 # initialize prompt
-znap eval starship 'starship init zsh --print-full-init'
-znap prompt starship
+znap prompt geometry-zsh/geometry
 
 # load plugins
 znap source marlonrichert/zcolors
@@ -125,5 +123,5 @@ alias -s {css,csv,go,gradle,html,js,json,md,patch,properties,py,ts,txt,xml,yml}=
 alias -s gz="gzip -l"
 alias -s {log,out}="tail -F"
 
-# run zoxide
-eval "$(zoxide init zsh)"
+# run zoxide to get the nice dir jumping utility available as `z`
+znap eval zoxide "zoxide init zsh"

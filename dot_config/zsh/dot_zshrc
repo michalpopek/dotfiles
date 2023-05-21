@@ -117,11 +117,5 @@ alias yt="yarn test"
 alias yui="yarn upgrade-interactive"
 alias yup="yarn upgrade"
 
-# aliases for file previewing
-: ${PAGER:=less}
-alias -s {css,csv,go,gradle,html,js,json,md,patch,properties,py,ts,txt,xml,yml}=bat
-alias -s gz="gzip -l"
-alias -s {log,out}="tail -F"
-
 # run zoxide to get the nice dir jumping utility available as `z`
 znap eval zoxide "zoxide init zsh"

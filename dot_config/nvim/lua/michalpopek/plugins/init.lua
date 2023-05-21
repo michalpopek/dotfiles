@@ -24,9 +24,13 @@ require('lazy').setup({
     { import = 'michalpopek.plugins.treesitter' },
     { import = 'michalpopek.plugins.telescope' },
     { import = 'michalpopek.plugins.lsp-zero' },
+    { import = 'michalpopek.plugins.lsp-saga' },
     { import = 'michalpopek.plugins.null-ls' },
     { import = 'michalpopek.plugins.lualine' },
+    { import = 'michalpopek.plugins.nvim-tree' },
     { import = 'michalpopek.plugins.git' },
     { import = 'michalpopek.plugins.copilot' },
+    { import = 'michalpopek.plugins.harpoon' },
+    { import = 'michalpopek.plugins.hop' },
   },
 })

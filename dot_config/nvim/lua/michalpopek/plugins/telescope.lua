@@ -12,15 +12,27 @@ return {
         return vim.fn.executable('make') == 1
       end,
     },
-    {
-      'nvim-telescope/telescope-file-browser.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' },
-    },
   },
   lazy = false,
   config = function()
     require('telescope').setup({
       defaults = {
+        prompt_prefix = '   ',
+        sorting_strategy = 'ascending',
+        layout_strategy = 'horizontal',
+        layout_config = {
+          horizontal = {
+            prompt_position = 'top',
+            preview_width = 0.55,
+            results_width = 0.8,
+          },
+          vertical = {
+            mirror = false,
+          },
+          width = 0.87,
+          height = 0.80,
+          preview_cutoff = 120,
+        },
         mappings = {
           i = {
             ['<C-u>'] = false,
@@ -42,12 +54,6 @@ return {
             },
           },
         },
-        extensions = {
-          file_browser = {
-            hijack_netrw = true,
-            hidden = true,
-          },
-        },
       },
     })
 
@@ -55,23 +61,10 @@ return {
 
     -- Enable telescope fzf native, if installed
     pcall(telescope.load_extension, 'fzf')
-    telescope.load_extension('file_browser')
 
     local builtins = require('telescope.builtin')
     local utils = require('telescope.utils')
     local themes = require('telescope.themes')
-    local extensions = telescope.extensions
-
-    vim.keymap.set('n', '<leader>b', function()
-      extensions.file_browser.file_browser({ hidden = true })
-    end, { desc = 'Open file [b]rowser in the root folder' })
-
-    vim.keymap.set('n', '<leader>B', function()
-      extensions.file_browser.file_browser({
-        path = utils.buffer_dir(),
-        hidden = true,
-      })
-    end, { desc = 'Open file [b]rowser in buffer directory' })
 
     vim.keymap.set('n', '<leader>?', function()
       builtins.oldfiles({ only_cwd = true })
@@ -85,63 +78,102 @@ return {
       builtins.current_buffer_fuzzy_find(themes.get_ivy())
     end, { desc = '[/] Fuzzily search in current buffer' })
 
+    local function search_files(opts)
+      opts = opts or {}
+      local ok = pcall(
+        builtins.git_files,
+        vim.tbl_extend('keep', opts, { show_untracked = true })
+      )
+      if not ok then
+        builtins.find_files(opts)
+      end
+    end
+
     vim.keymap.set(
       'n',
-      '<leader>ff',
-      builtins.find_files,
+      '<leader>sf',
+      search_files,
       { desc = '[S]earch [f]iles' }
     )
 
-    vim.keymap.set('n', '<leader>fF', function()
-      builtins.find_files({ cwd = utils.buffer_dir() })
+    vim.keymap.set('n', '<leader>sF', function()
+      search_files({ cwd = utils.buffer_dir() })
     end, { desc = '[S]earch [F]iles in buffer directory' })
 
     vim.keymap.set(
       'n',
-      '<leader>fw',
+      '<leader>sw',
       builtins.grep_string,
       { desc = '[S]earch current [w]ord' }
     )
 
-    vim.keymap.set('n', '<leader>fW', function()
+    vim.keymap.set('n', '<leader>sW', function()
       builtins.grep_string({ cwd = utils.buffer_dir() })
     end, { desc = '[S]earch current [W]ord in buffer directory' })
 
     vim.keymap.set(
       'n',
-      '<leader>fg',
+      '<leader>sg',
       builtins.live_grep,
       { desc = '[S]earch by [g]rep' }
     )
 
-    vim.keymap.set('n', '<leader>fG', function()
+    vim.keymap.set('n', '<leader>sG', function()
       builtins.live_grep({ cwd = utils.buffer_dir() })
     end, { desc = '[S]earch by [G]rep in buffer directory' })
 
-    vim.keymap.set('n', '<leader>fd', function()
+    vim.keymap.set('n', '<leader>sd', function()
       builtins.diagnostics()
     end, { desc = '[S]earch [d]iagnostics' })
 
-    vim.keymap.set('n', '<leader>fD', function()
+    vim.keymap.set('n', '<leader>sD', function()
       builtins.diagnostics({ bufnr = 0 })
     end, { desc = '[S]earch [D]iagnostics in current buffer' })
 
     vim.keymap.set(
       'n',
-      '<leader>fs',
+      '<leader>ss',
       builtins.lsp_dynamic_workspace_symbols,
       { desc = '[S]earch [s]ymbols in workspace' }
     )
 
     vim.keymap.set(
       'n',
-      '<leader>fS',
+      '<leader>sS',
       builtins.lsp_document_symbols,
       { desc = '[S]earch [S]ymbols in current document' }
     )
 
-    vim.keymap.set('n', '<leader>fh', function()
-      builtins.help_tags(themes.get_ivy())
+    vim.keymap.set(
+      'n',
+      '<leader>\\',
+      builtins.resume,
+      { desc = '[\\] Resume last picker' }
+    )
+
+    vim.keymap.set(
+      'n',
+      '<leader>sj',
+      builtins.jumplist,
+      { desc = '[S]earch [j]umplist' }
+    )
+
+    vim.keymap.set(
+      'n',
+      '<leader>sr',
+      builtins.registers,
+      { desc = '[S]earch [r]egisters' }
+    )
+
+    vim.keymap.set(
+      'n',
+      '<leader>sm',
+      builtins.marks,
+      { desc = '[S]earch [m]arks' }
+    )
+
+    vim.keymap.set('n', '<leader>sh', function()
+      builtins.help_tags()
     end, { desc = '[S]earch [H]elp' })
   end,
 }

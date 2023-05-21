@@ -40,7 +40,10 @@ vim.o.timeout = true
 vim.o.timeoutlen = 1000
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect'
+
+-- Show only 15 items in the completion menu
+vim.o.pumheight = 15
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true

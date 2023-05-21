@@ -10,8 +10,11 @@ return {
     require('nvim-treesitter.configs').setup({
       ensure_installed = {
         'css',
+        'gitcommit',
         'html',
         'json',
+        'markdown',
+        'markdown_inline',
         'python',
         'tsx',
         'help',

@@ -1,3 +1,16 @@
+-- TODO: implement feline.nvim + tabby.nvim
+-- return {
+--   {
+--     'freddiehaddad/feline.nvim',
+--     opts = {
+--       separators = {
+--         left_sep = 'left_rounded',
+--         right_sep = 'right_rounded',
+--       },
+--     },
+--   },
+-- }
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
@@ -7,16 +20,11 @@ return {
   opts = {
     options = {
       theme = 'auto',
+      disabled_filetypes = {
+        statusline = { 'NvimTree' },
+      },
     },
     extension = { 'quickfix' },
-    -- tabline = {
-    --   lualine_b = {
-    --     {
-    --       'tabs',
-    --       mode = 2,
-    --     },
-    --   },
-    -- },
     sections = {
       lualine_b = {
         {
@@ -48,7 +56,6 @@ return {
         },
       },
       lualine_x = {
-        'filetype',
         {
           'lsp_progress',
           display_components = { 'lsp_client_name', 'spinner' },
@@ -63,6 +70,7 @@ return {
             '🌘 ',
           },
         },
+        'filetype',
       },
     },
     inactive_sections = {

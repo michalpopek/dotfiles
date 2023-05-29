@@ -1,5 +1,10 @@
 return {
   {
+    'tpope/vim-fugitive',
+    dependencies = { 'tpope/vim-rhubarb' },
+    event = 'VeryLazy',
+  },
+  {
     'lewis6991/gitsigns.nvim',
     event = 'BufEnter',
     config = function()
@@ -63,30 +68,21 @@ return {
             gitsigns.reset_buffer,
             { desc = '[G]it: [r]eset [b]uffer' }
           )
-
-          local has_telescope, telescope = pcall(require, 'telescope.builtin')
-          if has_telescope then
-            vim.keymap.set(
-              'n',
-              '<leader>gs',
-              telescope.git_status,
-              { desc = '[G]it: [s]tatus' }
-            )
-
-            vim.keymap.set(
-              'n',
-              '<leader>gb',
-              telescope.git_branches,
-              { desc = '[G]it: [b]ranches' }
-            )
-          end
         end,
       })
     end,
   },
   {
-    'tpope/vim-fugitive',
-    dependencies = { 'tpope/vim-rhubarb' },
-    cmd = { 'Git', 'G' },
+    'akinsho/git-conflict.nvim',
+    opts = {
+      default_mappings = {
+        ours = '<leader>gco',
+        theirs = '<leader>gct',
+        none = '<leader>gcn',
+        both = '<leader>gcb',
+        next = ']x',
+        prev = '[x',
+      },
+    },
   },
 }

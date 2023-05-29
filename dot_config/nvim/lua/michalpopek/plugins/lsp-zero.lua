@@ -9,6 +9,7 @@ return {
       require('lsp-zero.settings').preset({})
     end,
   },
+  -- LSP servers
   {
     'neovim/nvim-lspconfig',
     cmd = 'LspInfo',
@@ -19,7 +20,7 @@ return {
       {
         'williamboman/mason.nvim',
         build = function()
-          pcall(vim.cmd, 'MasonUpdate')
+          pcall(vim.cmd.MasonUpdate)
         end,
       },
     },
@@ -85,14 +86,19 @@ return {
       lsp.setup()
     end,
   },
-
+  -- completion
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      'L3MON4D3/LuaSnip',
+      {
+        'L3MON4D3/LuaSnip',
+        version = '1.*',
+        build = 'make install_jsregexp',
+      },
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
       'onsails/lspkind.nvim',
     },
     config = function()
@@ -107,8 +113,8 @@ return {
       cmp.setup({
         sources = {
           { name = 'nvim_lsp' },
-          { name = 'path' },
           { name = 'luasnip', keyword_length = 2 },
+          { name = 'path' },
         },
         mapping = {
           ['<CR>'] = cmp.mapping.confirm({
@@ -126,6 +132,11 @@ return {
             ellipsis_char = '...',
           }),
         },
+      })
+
+      -- load snippets from vscode
+      require('luasnip.loaders.from_vscode').load({
+       paths = { '~/.config/nvim/snippets/vsc-snippets.nvim' },
       })
     end,
   },

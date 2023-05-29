@@ -55,3 +55,5 @@ vim.o.splitright = true
 -- Disable netrw (see `:help netrw-noload` for more info)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+vim.o.showtabline = 1

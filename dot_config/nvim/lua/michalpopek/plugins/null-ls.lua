@@ -4,7 +4,8 @@ return {
     'williamboman/mason.nvim',
     'jose-elias-alvarez/null-ls.nvim',
   },
-  event = 'VeryLazy',
+  cmd = 'LspInfo',
+  event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     require('mason-null-ls').setup({
       ensure_installed = { 'stylua', 'prettierd', 'shfmt' },

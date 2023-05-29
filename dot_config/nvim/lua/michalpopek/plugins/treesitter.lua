@@ -2,6 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'windwp/nvim-ts-autotag',
   },
   build = function()
     pcall(require('nvim-treesitter.install').update({ with_sync = true }))
@@ -12,25 +13,34 @@ return {
         'css',
         'gitcommit',
         'html',
+        'javascript',
         'json',
         'markdown',
         'markdown_inline',
         'python',
         'tsx',
-        'help',
+        'typescript',
         'yaml',
         'vim',
       },
       auto_install = false,
-      highlight = { enable = true },
-      indent = { enable = true, disable = { 'python' } },
+      autotag = {
+        enable = true,
+      },
+      highlight = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+        disable = { 'python' },
+      },
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = '<c-space>',
-          node_incremental = '<c-space>',
+          init_selection = '<S-Space>',
+          node_incremental = '<S-Space>',
+          node_decremental = '<M-Space>',
           scope_incremental = '<c-s>',
-          node_decremental = '<M-space>',
         },
       },
       textobjects = {

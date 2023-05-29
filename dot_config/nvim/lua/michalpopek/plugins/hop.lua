@@ -13,8 +13,8 @@ return {
     vim.keymap.set(
       { 'n', 'v' },
       '\\l',
-      '<cmd>HopLine<cr>',
-      { desc = 'Hop to [l]ine' }
+      '<cmd>HopLineStart<cr>',
+      { desc = 'Hop to [l]ine start' }
     )
 
     vim.keymap.set(

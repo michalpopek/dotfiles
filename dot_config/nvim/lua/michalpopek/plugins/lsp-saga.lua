@@ -74,7 +74,7 @@ return {
     vim.keymap.set(
       'n',
       '<leader>la',
-      'cmd>Lspsaga code_action<CR>',
+      '<cmd>Lspsaga code_action<CR>',
       { desc = 'Show code actions' }
     )
 
@@ -94,14 +94,14 @@ return {
 
     vim.keymap.set(
       'n',
-      '<leader>ld',
+      '<leader>lD',
       '<cmd>Lspsaga show_buf_diagnostics<CR>',
       { desc = 'Show buffer diagnostics' }
     )
 
     vim.keymap.set(
       'n',
-      '<leader>lD',
+      '<leader>ld',
       '<cmd>Lspsaga show_workspace_diagnostics<CR>',
       { desc = 'Show workspace diagnostics' }
     )

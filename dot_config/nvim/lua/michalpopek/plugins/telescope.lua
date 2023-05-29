@@ -64,7 +64,6 @@ return {
 
     local builtins = require('telescope.builtin')
     local utils = require('telescope.utils')
-    local themes = require('telescope.themes')
 
     vim.keymap.set('n', '<leader>?', function()
       builtins.oldfiles({ only_cwd = true })
@@ -75,7 +74,7 @@ return {
     end, { desc = '[ ] Find existing buffers' })
 
     vim.keymap.set('n', '<leader>/', function()
-      builtins.current_buffer_fuzzy_find(themes.get_ivy())
+      builtins.current_buffer_fuzzy_find()
     end, { desc = '[/] Fuzzily search in current buffer' })
 
     local function search_files(opts)
@@ -175,5 +174,19 @@ return {
     vim.keymap.set('n', '<leader>sh', function()
       builtins.help_tags()
     end, { desc = '[S]earch [H]elp' })
+
+    vim.keymap.set(
+      'n',
+      '<leader>gs',
+      builtins.git_status,
+      { desc = '[G]it: [s]tatus' }
+    )
+
+    vim.keymap.set(
+      'n',
+      '<leader>gb',
+      builtins.git_branches,
+      { desc = '[G]it: [b]ranches' }
+    )
   end,
 }

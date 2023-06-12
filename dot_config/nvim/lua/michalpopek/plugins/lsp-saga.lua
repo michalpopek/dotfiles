@@ -31,7 +31,7 @@ return {
 
     vim.keymap.set(
       'n',
-      ']d',
+      '[d',
       '<cmd>Lspsaga diagnostic_jump_prev<cr>',
       { desc = 'jump to previous diagnostic' }
     )

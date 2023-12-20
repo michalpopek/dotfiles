@@ -20,11 +20,11 @@ brew bundle
 
 3. Open 1Password and log into all necessary vaults. Next, go to `Setting -> Developer` and enable the SSH agent, as well as the CLI integration.
 
-4. Set the ZSH version installed by Homebrew as the default shell.
+4. Set Fish as default shell.
 
 ```sh
-echo "$(which zsh)" | sudo tee -a /etc/shells
-chsh -s $(which zsh)
+echo "$(which fish)" | sudo tee -a /etc/shells
+chsh -s $(which fish)
 ```
 
 5. Log out and log in for changes to be applied.

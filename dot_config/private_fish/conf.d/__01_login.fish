@@ -9,7 +9,7 @@ eval (/opt/homebrew/bin/brew shellenv)
 # https://fishshell.com/docs/current/faq.html#why-doesn-t-set-ux-exported-universal-variables-seem-to-work
 
 # define general environment vars
-set -gx EDITOR nvim
+set -gx EDITOR vim
 set -gx LC_ALL en_US.UTF-8
 set -gx LANG en_US.UTF-8
 set -gx LESS -FiMR -j.5 --incsearch

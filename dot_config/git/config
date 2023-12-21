@@ -5,6 +5,30 @@ email = michal@popek.co
 [feature]
 manyFiles = true
 
+[alias]
+a = add
+aa = add --all
+apa = add --patch
+b = branch
+c = commit
+co = checkout
+d = diff
+ignore = update-index --assume-unchanged
+l = pull
+lg = log --stat
+lgg = log --graph --decorate --pretty=oneline --abbrev-commit
+lo = log --oneline --decorate
+m = merge
+p = push
+rb = rebase
+rbi = rebase -i
+rh = reset
+rhh = reset --hard
+st = status
+sw = switch
+swc = switch -c
+unignore = update-index --no-assume-unchanged
+
 [core]
 excludesfile = ~/.config/git/ignore
 autocrlf = input
@@ -54,23 +78,3 @@ program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 [commit]
 gpgsign = true
-
-[maintenance]
-repo = /Users/michalpopek/.znap/ohmyzsh
-repo = /Users/michalpopek/.znap/zcolors
-repo = /Users/michalpopek/.znap/zsh-autocomplete
-repo = /Users/michalpopek/.znap/zsh-autosuggestions
-repo = /Users/michalpopek/.znap/zsh-history-substring-search
-repo = /Users/michalpopek/.znap/zsh-snap
-repo = /Users/michalpopek/.znap/zsh-syntax-highlighting
-repo = /Users/michalpopek/.znap/zsh-z
-repo = /Users/michalpopek/.znap/zsh-completions
-repo = /Users/mp/.znap/ohmyzsh
-repo = /Users/mp/.znap/zcolors
-repo = /Users/mp/.znap/zsh-autocomplete
-repo = /Users/mp/.znap/zsh-autosuggestions
-repo = /Users/mp/.znap/zsh-completions
-repo = /Users/mp/.znap/zsh-history-substring-search
-repo = /Users/mp/.znap/zsh-snap
-repo = /Users/mp/.znap/zsh-syntax-highlighting
-repo = /Users/mp/.znap/zsh-z
